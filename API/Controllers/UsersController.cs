@@ -6,18 +6,18 @@ using System.Data.Entity;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class UserController : ControllerBase
+    [Route("api/[controller]")]
+    public class UsersController : ControllerBase
     {
         private readonly DataContext _context;
-        public UserController(DataContext context) {
+        public UsersController(DataContext context) {
             _context = context;
         }
 
         [HttpGet]
         public async Task<IEnumerable<AppUser>> GetUsers()
         {
-            var users = await _context.Users.ToListAsync();
+            var users = _context.Users.ToList();
 
             return users;
         }
