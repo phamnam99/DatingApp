@@ -26,26 +26,27 @@ namespace API.Controllers
             var existUser = await UserExists(acc.Username);
             if (existUser) throw new Exception("Exist username");
 
-            using var hmac = new HMACSHA512();
+            return Ok();
+            //using var hmac = new HMACSHA512();
 
-            var userCreate = new AppUser
-            {
-                UserName = acc.Username.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(acc.Password)),
-                PasswordSalt = hmac.Key
-            };
+            //var userCreate = new AppUser
+            //{
+            //    UserName = acc.Username.ToLower(),
+            //    PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(acc.Password)),
+            //    PasswordSalt = hmac.Key
+            //};
 
-            await _context.Users.AddAsync(userCreate);
+            //await _context.Users.AddAsync(userCreate);
 
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
 
-            var res = new UserDto
-            {
-                Username = userCreate.UserName,
-                Token = _tokenService.CreateToken(userCreate)
-            };
+            //var res = new UserDto
+            //{
+            //    Username = userCreate.UserName,
+            //    Token = _tokenService.CreateToken(userCreate)
+            //};
 
-            return res;
+            //return res;
         }
 
         [HttpPost("login")]
