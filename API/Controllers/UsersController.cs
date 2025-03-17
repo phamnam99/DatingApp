@@ -40,7 +40,8 @@ namespace API.Controllers
 
             if (user == null) return NotFound();
 
-            return _mapper.Map<MemberDto>(user);
+            var res = _mapper.Map<MemberDto>(user);
+            return res;
         }
     }
 }
