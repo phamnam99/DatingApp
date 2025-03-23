@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../_model/User.model';
 import { map } from 'rxjs';
+import { User } from '../_model/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +30,7 @@ export class AccountService {
   }
 
   login(user: any) {
-    return this.http.post<User>(this.baseUrl + 'logins', user).pipe(
+    return this.http.post<User>(this.baseUrl + 'login', user).pipe(
       map((user) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
