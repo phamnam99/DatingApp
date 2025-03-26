@@ -26,7 +26,6 @@ export class MemberDetailComponent implements OnInit {
   }
 
   loadMember() {
-    debugger;
     const username = this.route.snapshot.paramMap.get('username');
     if (!username) return;
 
